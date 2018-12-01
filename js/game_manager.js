@@ -21,12 +21,12 @@ function valueToHTML(val1){
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function () {
   if (this.grid.cellsAvailable()) {
-    var value="R";
+    var value="A";
     var r = Math.random();
     if (r<0.3333333){
-      value = "P";
+      value = "B";
     } else if (r<0.6666667){
-      value = "S";
+      value = "C";
     }
 
     var tile = new Tile(this.grid.randomAvailableCell(), value);
@@ -41,26 +41,26 @@ GameManager.prototype.validMatch = function(val1,val2){
 
 GameManager.prototype.mergeValues = function(val1,val2){
   switch(val1){
-    case "R":
+    case "A":
       {
-        if (val2==="P"){
-          return "S";
+        if (val2==="B"){
+          return "C";
         }
-        return "P";
+        return "B";
       }
-    case "P":
+    case "B":
       {
-        if (val2==="S"){
-          return "R";
+        if (val2==="C"){
+          return "A";
         }
-        return "S";
+        return "C";
       }
-    case "S":
+    case "C":
       {
-        if (val2==="P"){
-          return "R";
+        if (val2==="B"){
+          return "A";
         }
-        return "P";
+        return "B";
       }
   }
   return val1;
